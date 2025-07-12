@@ -1,7 +1,7 @@
 #────────────────────────────────────────
 # Compiler / Linker
 CXX      := g++
-CXXFLAGS := -m64 -O2 -Wall -Iinclude
+CXXFLAGS := -std=c++23 -m64 -O2 -Wall -Iinclude
 LDFLAGS  := -m64 -Llib -lraylib -lenet -lgdi32 -lwinmm -lopengl32 -lstdc++ \
             -Wl,-subsystem,console   # force console entry point
 
