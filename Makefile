@@ -2,8 +2,7 @@
 # Compiler / Linker
 CXX      := g++
 CXXFLAGS := -std=c++23 -m64 -O2 -Wall -Iinclude
-LDFLAGS  := -m64 -Llib -lraylib -lenet -lgdi32 -lwinmm -lopengl32 -lstdc++ \
-            -Wl,-subsystem,console   # force console entry point
+LDFLAGS := -m64 -Llib -lraylib -lenet -lgdi32 -lwinmm -lopengl32 -lstdc++ -lstdc++exp -Wl,-subsystem,console
 
 #────────────────────────────────────────
 # Sources & Objects
