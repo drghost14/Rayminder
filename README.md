@@ -36,7 +36,7 @@ codecanvas/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/codecanvas.git
+   git clone https://github.com/drghost14/codecanvas.git
    ```
 2. **Ensure MinGW and make are installed and added to your system PATH.**
 
