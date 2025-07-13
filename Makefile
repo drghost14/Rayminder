@@ -15,7 +15,7 @@ JOBS      ?= $(CORES)
 
 #────────────────────────────────────────
 # Sources & Objects
-SRCS := $(wildcard src/*.cpp src/*/*.cpp src/*/*/*.cpp src/*/*/*/*/cpp)
+SRCS := $(wildcard src/*.cpp src/*/*.cpp src/*/*/*.cpp src/*/*/*/*cpp src/*/*/*/*/*.cpp)
 OBJS := $(SRCS:.cpp=.o)
 
 #────────────────────────────────────────
