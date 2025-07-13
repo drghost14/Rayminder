@@ -15,7 +15,7 @@ JOBS      ?= $(CORES)
 
 #────────────────────────────────────────
 # Sources & Objects
-SRCS := $(wildcard src/*.cpp src/*/*.cpp src/*/*/*.cpp src/*/*/*/*cpp src/*/*/*/*/*.cpp)
+SRCS := $(wildcard src/*.cpp src/*/*.cpp src/*/*/*.cpp src/*/*/*/*.cpp src/*/*/*/*/*.cpp)
 OBJS := $(SRCS:.cpp=.o)
 
 #────────────────────────────────────────
@@ -26,8 +26,7 @@ TARGET    := main.exe
 .PHONY: all pr pr_run strip clean package package-run
 
 # Default: single-threaded build
-all: $(TARGET)
-	@$(MAKE) strip
+all: $(TARGET) strip
 
 # Parallel build
 pr:
@@ -56,4 +55,3 @@ strip:
 clean:
 	@echo "→ Cleaning everything…"
 	@rm -f $(OBJS) $(TARGET)
-	@rm -rf $(PACKAGE_DIR)
