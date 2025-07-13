@@ -23,12 +23,6 @@ OBJS := $(SRCS:.cpp=.o)
 TARGET    := main.exe
 
 #────────────────────────────────────────
-# Packaging
-PACKAGE_DIR := dist
-DATA_DIR    := data
-DLLS        := raylib.dll glfw3.dll libwinpthread-1.dll libstdc++-6.dll libgcc_s_seh-1.dll
-
-#────────────────────────────────────────
 .PHONY: all pr pr_run strip clean package package-run
 
 # Default: single-threaded build
@@ -63,20 +57,3 @@ clean:
 	@echo "→ Cleaning everything…"
 	@rm -f $(OBJS) $(TARGET)
 	@rm -rf $(PACKAGE_DIR)
-
-# Create distributable package
-package: $(TARGET)
-	@echo "→ Creating package directory…"
-	@rm -rf $(PACKAGE_DIR)
-	@mkdir -p $(PACKAGE_DIR)
-	@echo "→ Copying executable and DLLs…"
-	@cp $(TARGET) $(addprefix $(PACKAGE_DIR)/, $(TARGET))
-	@cp $(addprefix lib/,$(DLLS)) $(PACKAGE_DIR)/
-	@echo "→ Copying data directory…"
-	@cp -r $(DATA_DIR) $(PACKAGE_DIR)/
-	@$(MAKE) strip
-
-# Run from package
-package-run: package
-	@echo "→ Running packaged game…"
-	@cd $(PACKAGE_DIR) && ./$(TARGET)
