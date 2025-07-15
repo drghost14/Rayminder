@@ -1,6 +1,6 @@
 # ──────────────────────────────────────────────────────────────────────────────
 # Project : OpenGL 3D Learning with GLM
-# Makefile Version : 1.1
+# Makefile Version : 1.2
 # Author  : drghost14
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -94,3 +94,10 @@ strip:
 clean:
 	@echo "→ Cleaning all build artifacts…"
 	@rm -f $(OBJS) $(TARGET)
+
+#────────────────────────────────────────
+# Manual .o file cleanup only
+#────────────────────────────────────────
+clear:
+	@echo "→ Manually removing only object files…"
+	@rm -f $(OBJS)
