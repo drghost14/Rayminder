@@ -1,7 +1,8 @@
 # ──────────────────────────────────────────────────────────────────────────────
-# Project : OpenGL 3D Learning with GLM
-# Makefile Version : 1.2
-# Author  : Muhammad Hassnain Khichi (aka drghost)
+# Project      : OpenGL 3D Learning with GLM (Static ENet & Raylib)
+# Makefile     : Version 1.3
+# Author       : Muhammad Hassnain Khichi (aka drghost)
+# Description  : Statically links ENet (libenet.a) and Raylib (libraylib.a)
 # ──────────────────────────────────────────────────────────────────────────────
 
 #────────────────────────────────────────
@@ -9,10 +10,20 @@
 #────────────────────────────────────────
 CXX       := g++
 CXXFLAGS  := -m64 -O2 -Wall -std=c++23 -Iinclude
-LDFLAGS   := -m64 -Llib \
-              -lraylib -lenet -lgdi32 -lwinmm -lopengl32 \
-              -lstdc++ -lstdc++exp \
-              -Wl,-subsystem,console
+
+# Link everything statically:
+#  -static            -> produce a fully static binary
+#  -static-libstdc++  -> link libstdc++ statically
+#  -static-libgcc     -> link libgcc statically
+# -Bstatic/-Bdynamic  -> force static for ENet & Raylib, dynamic afterwards
+LDFLAGS   := -m64 \
+             -static \
+             -static-libstdc++ \
+             -static-libgcc \
+             -Llib \
+             -Wl,-Bstatic -lraylib -lenet \
+             -Wl,-Bdynamic -lgdi32 -lwinmm -lopengl32 -lws2_32 \
+             -Wl,-subsystem,console
 
 #────────────────────────────────────────
 # Parallelism
@@ -21,7 +32,7 @@ CORES     := $(shell nproc 2>/dev/null || echo 4)
 JOBS      ?= $(CORES)
 
 #────────────────────────────────────────
-# Sources & Objects (don’t touch this)
+# Sources & Objects
 #────────────────────────────────────────
 SRCS      := $(wildcard \
                src/*.cpp \
@@ -39,7 +50,7 @@ TARGET    := main.exe
 #────────────────────────────────────────
 # Phony Targets
 #────────────────────────────────────────
-.PHONY: all run pr pr_run strip clean
+.PHONY: all run pr pr_run strip clean clear
 
 #────────────────────────────────────────
 # Default: build + strip (.o removal)
