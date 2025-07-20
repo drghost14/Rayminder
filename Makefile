@@ -1,6 +1,6 @@
 # ──────────────────────────────────────────────────────────────────────────────
 # Project      : OpenGL 3D Learning with GLM (Static ENet & Raylib)
-# Makefile     : Version 1.3
+# Makefile     : Version 1.4
 # Author       : Muhammad Hassnain Khichi (aka drghost)
 # Description  : Statically links ENet (libenet.a) and Raylib (libraylib.a)
 # ──────────────────────────────────────────────────────────────────────────────
@@ -112,3 +112,28 @@ clean:
 clear:
 	@echo "→ Manually removing only object files…"
 	@rm -f $(OBJS)
+
+#────────────────────────────────────────
+# Package: build + strip symbols + copy to dist/
+#────────────────────────────────────────
+package: all
+	@echo "→ Preparing package…"
+	@mkdir -p dist
+	@echo "→ Stripping debugging symbols from $(TARGET)…"
+	@strip $(TARGET)
+	@cp $(TARGET) dist/
+	@echo "→ Package created in dist/"
+
+#────────────────────────────────────────
+# Package + Run
+#────────────────────────────────────────
+package_run: package
+	@echo "→ Running packaged executable…"
+	@./dist/$(TARGET)
+
+#────────────────────────────────────────
+# Delete the dist/ folder (packaged files)
+#────────────────────────────────────────
+package_clear:
+	@echo "→ Removing package folder dist/…"
+	@rm -rf dist
