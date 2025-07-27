@@ -16,7 +16,7 @@
 
 ---
 
-'''### 📁 Folder Overview
+```### 📁 Folder Overview
 
 codecanvas/
 ├── .vscode/          # VS Code tasks for build/clean
@@ -31,7 +31,7 @@ codecanvas/
 │   └── main.cpp      # Starter source file (currently empty)
 ├── Makefile          # Build rules for MinGW         OPTION A
 └── CMakeLists.txt    # Build rules for MinGW / MSVC  OPTION B
-   '''
+```
 
 
 ### 🧪 Quick Start Guide
