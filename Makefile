@@ -16,14 +16,15 @@ CXXFLAGS  := -m64 -O2 -Wall -std=c++23 -Iinclude
 #  -static-libstdc++  -> link libstdc++ statically
 #  -static-libgcc     -> link libgcc statically
 # -Bstatic/-Bdynamic  -> force static for ENet & Raylib, dynamic afterwards
-LDFLAGS   := -m64 \
-             -static \
-             -static-libstdc++ \
-             -static-libgcc \
-             -Llib \
-             -Wl,-Bstatic -lraylib -lenet \
-             -Wl,-Bdynamic -lgdi32 -lwinmm -lopengl32 -lws2_32 \
-             -Wl,-subsystem,console
+LDFLAGS := \
+		-m64 \
+		-static \
+		-static-libstdc++ \
+		-static-libgcc \
+		-Llib \
+		-Wl,-Bstatic -lraylib -lenet -lstdc++exp \
+		-Wl,-Bdynamic -lgdi32 -lwinmm -lopengl32 -lws2_32 \
+		-Wl,-subsystem,console
 
 #────────────────────────────────────────
 # Parallelism
