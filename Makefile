@@ -1,6 +1,6 @@
 # ──────────────────────────────────────────────────────────────────────────────
 # Project      : OpenGL 3D Learning with GLM (Static ENet & Raylib)
-# Makefile     : Version 1.4
+# Makefile     : Version 1.5
 # Author       : Muhammad Hassnain Khichi (aka drghost)
 # Description  : Statically links ENet (libenet.a) and Raylib (libraylib.a)
 # ──────────────────────────────────────────────────────────────────────────────
