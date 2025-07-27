@@ -29,7 +29,8 @@ codecanvas/
 ├── lib/              # DLLs and libraries for linking
 ├── src/
 │   └── main.cpp      # Starter source file (currently empty)
-└── Makefile          # Build rules for MinGW
+├── Makefile          # Build rules for MinGW         OPTION A
+└── CMakeLists.txt    # Build rules for MinGW / MSVC  OPTION B 
 
 
 ### 🧪 Quick Start Guide
