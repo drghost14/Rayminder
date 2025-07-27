@@ -6,18 +6,20 @@
 
 ### ⚙️ Built On
 
-- 🖼️ **Raylib** — simplifies graphics, window creation, and input
-- 📐 **GLM** — modern C++ mathematics library for graphics applications
-- 🌐 **ENet** — lightweight UDP-based networking
+- 🖼️ **Raylib**            — simplifies graphics, window creation, and input
+- 📐 **GLM**               — modern C++ mathematics library for graphics applications
+- 🌐 **ENet**              — lightweight UDP-based networking
 - 🎮 **OpenGL (via GLAD)** — for modern GPU rendering
-- 🧰 **MinGW** — compiler and linker (make sure it’s installed)
-- 📄 **Makefile** — build logic for MinGW
-- 🧠 **VS Code Tasks** — one-click build & clean
+- 🧰 **MinGW**             — compiler and linker (make sure it’s installed)
+- 📄 **Makefile**          — build logic for MinGW
+- 🛠️ **CMake**             — build logic for MinGW / MSVC
+- 🧠 **VS Code Tasks**     — one-click build & clean
 
 ---
 
-```### 📁 Folder Overview
+### 📁 Folder Overview
 
+```text
 codecanvas/
 ├── .vscode/          # VS Code tasks for build/clean
 ├── include/
@@ -32,7 +34,6 @@ codecanvas/
 ├── Makefile          # Build rules for MinGW         OPTION A
 └── CMakeLists.txt    # Build rules for MinGW / MSVC  OPTION B
 ```
-
 
 ### 🧪 Quick Start Guide
 
