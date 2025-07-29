@@ -1,94 +1,95 @@
-## 🎨 CodeCanvas — A Visual Studio Code Template for C++ Graphics & Networking
+## ⏰ Rayminder — A Calming C++ Reminder App with Raylib
 
-**CodeCanvas** is a curated C++ starter kit designed specifically for **Visual Studio Code** users on Windows. It wraps together powerful technologies—graphics, networking, and input handling—into a flexible, clean setup that accelerates development for interactive applications, games, and real-time tools.
+**Rayminder** is a lightweight C++ desktop application designed for timed reminders, blending clean visuals with ASMR-inspired ambiance. Built on **Raylib**, it offers gentle animations, pulsating shaders, and audio cues to create a serene reminder experience.
 
----
-
-### ⚙️ Built On
-
-- 🖼️ **Raylib**            — simplifies graphics, window creation, and input
-- 📐 **GLM**               — modern C++ mathematics library for graphics applications
-- 🌐 **ENet**              — lightweight UDP-based networking
-- 🎮 **OpenGL (via GLAD)** — for modern GPU rendering
-- 🧰 **MinGW**             — compiler and linker (make sure it’s installed)
-- 📄 **Makefile**          — build logic for MinGW
-- 🛠️ **CMake**             — build logic for MinGW / MSVC
-- 🧠 **VS Code Tasks**     — one-click build & clean
+Whether you're scheduling personal tasks or showcasing technical elegance, Rayminder delivers a graceful fusion of graphics and functionality.
 
 ---
 
-### 📁 Folder Overview
+### ⚙️ Tech Stack
+
+- 🎨 **Raylib** — simplified graphics and audio management  
+- 🔷 **OpenGL** — dynamic effects and shader-driven visuals  
+- 🔊 **AudioStream (MP3)** — soft ambient sound for ASMR feel  
+- 🕰️ **C++ <chrono> & <ctime>** — precise reminder timing  
+- 🧵 **std::thread** — concurrent reminder popups  
+- 🔠 **Custom UI Effects** — pulsating visuals with math-driven styling  
+
+---
+
+### 💻 Run the App
+
+> Ensure Raylib is properly included and `sound.mp3` is present in the `data/sounds/` folder.
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/drghost14/rayminder.git
+   ```
+
+2. **Compile with g++ cmake**
+   ```bash
+   cmake --build build
+   ```
+   
+3. **OR Compile with g++ makefile**
+   ```bash
+   make
+   ```
+   
+4. **Launch the app**
+   ```bash
+   ./main.exe
+   ```
+
+4. **Add your reminders**
+   Edit the predefined vector in `main()` like so:
+   ```cpp
+   vector<REMINDER> reminders = {
+       {{14, 30, 0}, "Time for a break!"},
+       {{14, 45, 0}, "Stretch and hydrate!"}
+   };
+   ```
+
+---
+
+### 🧠 App Structure
 
 ```text
-codecanvas/
-├── .vscode/          # VS Code tasks for build/clean
-├── include/
-│   ├── enet/         # ENet networking headers
-│   ├── raylib/       # Raylib headers
-│   ├── glad/         # OpenGL loader headers
-│   ├── KHR/          # Khronos headers (e.g., khrplatform.h)
-│   └── glm/          # Math library for vectors, matrices, transforms
-├── lib/              # DLLs and libraries for linking
+rayminder/
 ├── src/
-│   └── main.cpp      # Starter source file (currently empty)
-├── Makefile          # Build rules for MinGW         OPTION A
-└── CMakeLists.txt    # Build rules for MinGW / MSVC  OPTION B
-```
-
-### 🧪 Quick Start Guide
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/drghost14/codecanvas.git
-   ```
-2. **Ensure MinGW and make are installed and added to your system PATH.**
-
-3. **Open the folder in Visual Studio Code.**
-
-4. **Build the project:**
-   - Use `Ctrl + Shift + B` to trigger the pre-configured "Build Project" task.
-   - Or run `make` manually from the terminal.
-
-5. **Clean the project:**
-   - Use the "Clean Project" task or run:
-     ```bash
-     make clean
-     ```
-
----
-
-### 🧠 What’s Included in `lib/`
-
-- `raylib.dll`: Runtime dynamic library for Raylib (used only with dynamic linking)
-- `libraylibdll.a`: Import library for Raylib’s DLL
-- `libraylib.a`: Static library (used in this template)
-
-> 🔧 This template defaults to **static linking** with `libraylib.a`, meaning `raylib.dll` is not required at runtime.
-
----
-
-### 🛠️ Test Code Snippet
-
-```cpp
-#include "raylib/raylib.h"
-#include "glad/glad.h"
-
-int main() {
-    InitWindow(800, 600, "Hello CodeCanvas!");
-    while (!WindowShouldClose()) {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-        DrawText("Your template is ready to roll!", 250, 280, 20, GRAY);
-        EndDrawing();
-    }
-    CloseWindow();
-    return 0;
-}
+│   └── main.cpp         # Core reminder logic
+├── data/
+│   └── sounds/
+│       └── sound.mp3    # Background audio for reminder popup
+├── LICENSE              # MIT License
+├── Makefile             # Make rules for MinGW
+├── CMakeLists.txt       # Cmake rules for MinGW
+└── README.md            # Project documentation
 ```
 
 ---
 
-### 📄 License
+### 🧪 Sample Feature: Dynamic Reminder Window
 
-CodeCanvas is released under the [MIT License](LICENSE), ensuring it’s free and open for both personal and commercial use. Attribution is appreciated but not required.
+- Circular breathing effect: `DrawCircle(...)` animated by sine wave  
+- Smooth color transitions: `Color` fades and pulses using shader logic  
+- Centered messages drawn with calculated text width  
+- Background audio playback loop with `MusicStream`
+
+---
+
+### 🔐 License
+
+Rayminder is released under the [MIT License](LICENSE) —  
+you’re free to use, distribute, and remix this application for personal or educational purposes.  
+
+> Attribution is appreciated. Raylib and other dependencies maintain their own license terms.
+
+---
+
+### 🎥 YouTube Showcase
+
+This project is being featured in a multi-part video series  
+on [CodeCanvas ASMR’s YouTube Channel](https://www.youtube.com/@CodeCanvasASMR)), highlighting  
+its ASMR vibe and technical design.
 
