@@ -84,7 +84,6 @@ if(WIN32)
     stdc++exp
     gdi32
     winmm
-    opengl32
     ws2_32
   )
 else()
