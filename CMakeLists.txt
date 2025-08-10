@@ -120,29 +120,29 @@ add_custom_target(release_package
 )
 
 # ───────────────────────────────────────────────────────────────────────────────
-# 7.b Parallel-build target
+# 7.b Parallel-build target 
 # ───────────────────────────────────────────────────────────────────────────────
 
-# 1) Load ProcessorCount to detect number of cores
 include(ProcessorCount)
 ProcessorCount(NUM_CORES)
 if (NOT NUM_CORES)
-  # Fallback if detection failed
   set(NUM_CORES 1)
 endif()
-message(STATUS "∘ Configured to build in parallel using ${NUM_CORES} cores")
+message(STATUS "Configured to build in parallel using ${NUM_CORES} logical processors")
 
-# 2) Define the `pr` target
 add_custom_target(pr
-  # build in current binary dir, same config, using all cores
+  # print a header
+  COMMAND ${CMAKE_COMMAND} -E echo ""
+  COMMAND ${CMAKE_COMMAND} -E echo "Starting parallel build with ${NUM_CORES} threads..."
   COMMAND ${CMAKE_COMMAND}
-          --build "${CMAKE_BINARY_DIR}"
-          --config $<CONFIG>
-          --parallel ${NUM_CORES}
-  COMMENT "∘ Parallel build (${NUM_CORES} cores)"
+          -E time
+          ${CMAKE_COMMAND}
+            --build "${CMAKE_BINARY_DIR}"
+            --config $<CONFIG>
+            --parallel ${NUM_CORES}
+  COMMENT "Parallel build (${NUM_CORES} threads) with timing"
   USES_TERMINAL
 )
-
 
 #───────────────────────────────────────────────────────────────────────────────
 # 8. Usage Instructions
